@@ -1,0 +1,10 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+R-dev
+docbook-xml
+extra-cmake-modules
+kconfig
+kauth-dev
+libxml2
+mesa-dev
+qtbase-dev
