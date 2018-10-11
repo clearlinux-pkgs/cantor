@@ -4,7 +4,7 @@
 #
 Name     : cantor
 Version  : 18.08.2
-Release  : 3
+Release  : 4
 URL      : https://github.com/KDE/cantor/archive/v18.08.2.tar.gz
 Source0  : https://github.com/KDE/cantor/archive/v18.08.2.tar.gz
 Summary  : No detailed summary available
@@ -17,14 +17,36 @@ Requires: cantor-license
 BuildRequires : R
 BuildRequires : R-dev
 BuildRequires : analitza-dev
+BuildRequires : attica-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : docbook-xml
 BuildRequires : extra-cmake-modules
 BuildRequires : gmp-dev
+BuildRequires : karchive-dev
 BuildRequires : kauth-dev
+BuildRequires : kbookmarks-dev
+BuildRequires : kcodecs-dev
+BuildRequires : kcompletion-dev
 BuildRequires : kconfig
+BuildRequires : kconfig-dev
+BuildRequires : kconfigwidgets-dev
+BuildRequires : kcoreaddons-dev
+BuildRequires : kcrash-dev
+BuildRequires : kdoctools-dev
+BuildRequires : ki18n-dev
+BuildRequires : kiconthemes-dev
+BuildRequires : kio-dev
+BuildRequires : kitemviews-dev
+BuildRequires : kjobwidgets-dev
+BuildRequires : knewstuff-dev
+BuildRequires : kparts-dev
+BuildRequires : kpty-dev
+BuildRequires : kservice-dev
 BuildRequires : ktexteditor-dev
+BuildRequires : ktextwidgets-dev
+BuildRequires : kwidgetsaddons-dev
+BuildRequires : kxmlgui-dev
 BuildRequires : libxml2
 BuildRequires : mesa-dev
 BuildRequires : mpfr-dev
@@ -38,6 +60,8 @@ BuildRequires : pkgconfig(luajit)
 BuildRequires : pkgconfig(python3)
 BuildRequires : python3-dev
 BuildRequires : qtbase-dev
+BuildRequires : solid-dev
+BuildRequires : sonnet-dev
 
 %description
 ## Cantor
@@ -110,7 +134,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1539266748
+export SOURCE_DATE_EPOCH=1539268917
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -118,7 +142,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1539266748
+export SOURCE_DATE_EPOCH=1539268917
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/cantor
 cp COPYING %{buildroot}/usr/share/doc/cantor/COPYING
