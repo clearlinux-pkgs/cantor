@@ -1,4 +1,4 @@
-18.08.3
+18.11.80
 R
 analitza-dev
 attica-dev
@@ -28,3 +28,4 @@ kxmlgui-dev
 mpfr-dev
 solid-dev
 sonnet-dev
+syntax-highlighting-dev
