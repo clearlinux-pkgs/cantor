@@ -4,9 +4,9 @@
 #
 Name     : cantor
 Version  : 18.12.2
-Release  : 10
-URL      : https://github.com/KDE/cantor/archive/v18.12.2.tar.gz
-Source0  : https://github.com/KDE/cantor/archive/v18.12.2.tar.gz
+Release  : 11
+URL      : https://download.kde.org/stable/applications/18.12.2/src/cantor-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/cantor-18.12.2.tar.xz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0
@@ -14,17 +14,40 @@ Requires: cantor-bin = %{version}-%{release}
 Requires: cantor-data = %{version}-%{release}
 Requires: cantor-lib = %{version}-%{release}
 Requires: cantor-license = %{version}-%{release}
+Requires: cantor-locales = %{version}-%{release}
 BuildRequires : R
 BuildRequires : R-dev
 BuildRequires : analitza-dev
+BuildRequires : attica-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : docbook-xml
 BuildRequires : extra-cmake-modules
 BuildRequires : gmp-dev
+BuildRequires : karchive-dev
 BuildRequires : kauth-dev
+BuildRequires : kbookmarks-dev
+BuildRequires : kcodecs-dev
+BuildRequires : kcompletion-dev
 BuildRequires : kconfig
+BuildRequires : kconfig-dev
+BuildRequires : kconfigwidgets-dev
+BuildRequires : kcoreaddons-dev
+BuildRequires : kcrash-dev
+BuildRequires : kdoctools-dev
+BuildRequires : ki18n-dev
+BuildRequires : kiconthemes-dev
+BuildRequires : kio-dev
+BuildRequires : kitemviews-dev
+BuildRequires : kjobwidgets-dev
+BuildRequires : knewstuff-dev
+BuildRequires : kparts-dev
+BuildRequires : kpty-dev
+BuildRequires : kservice-dev
 BuildRequires : ktexteditor-dev
+BuildRequires : ktextwidgets-dev
+BuildRequires : kwidgetsaddons-dev
+BuildRequires : kxmlgui-dev
 BuildRequires : libxml2
 BuildRequires : mesa-dev
 BuildRequires : mpfr-dev
@@ -38,6 +61,8 @@ BuildRequires : pkgconfig(luajit)
 BuildRequires : pkgconfig(python3)
 BuildRequires : python3-dev
 BuildRequires : qtbase-dev
+BuildRequires : solid-dev
+BuildRequires : sonnet-dev
 BuildRequires : syntax-highlighting-dev
 
 %description
@@ -103,6 +128,14 @@ Group: Default
 license components for the cantor package.
 
 
+%package locales
+Summary: locales components for the cantor package.
+Group: Default
+
+%description locales
+locales components for the cantor package.
+
+
 %prep
 %setup -q -n cantor-18.12.2
 
@@ -111,15 +144,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1549769002
+export SOURCE_DATE_EPOCH=1549859547
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1549769002
+export SOURCE_DATE_EPOCH=1549859547
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/cantor
 cp COPYING %{buildroot}/usr/share/package-licenses/cantor/COPYING
@@ -128,6 +161,7 @@ cp cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/cantor/cm
 pushd clr-build
 %make_install
 popd
+%find_lang cantor
 
 %files
 %defattr(-,root,root,-)
@@ -230,6 +264,20 @@ popd
 
 %files doc
 %defattr(0644,root,root,0755)
+/usr/share/doc/HTML/ca/cantor/create-dlg.png
+/usr/share/doc/HTML/ca/cantor/differentiate-dlg.png
+/usr/share/doc/HTML/ca/cantor/import-dlg.png
+/usr/share/doc/HTML/ca/cantor/index.cache.bz2
+/usr/share/doc/HTML/ca/cantor/index.docbook
+/usr/share/doc/HTML/ca/cantor/integrate-dlg.png
+/usr/share/doc/HTML/ca/cantor/latex_formula.png
+/usr/share/doc/HTML/ca/cantor/matrix-dlg.png
+/usr/share/doc/HTML/ca/cantor/plot2d-dlg.png
+/usr/share/doc/HTML/ca/cantor/plot3d-dlg.png
+/usr/share/doc/HTML/ca/cantor/screenshot.png
+/usr/share/doc/HTML/ca/cantor/solve-equations-dlg.png
+/usr/share/doc/HTML/de/cantor/index.cache.bz2
+/usr/share/doc/HTML/de/cantor/index.docbook
 /usr/share/doc/HTML/en/cantor/create-dlg.png
 /usr/share/doc/HTML/en/cantor/differentiate-dlg.png
 /usr/share/doc/HTML/en/cantor/import-dlg.png
@@ -244,6 +292,42 @@ popd
 /usr/share/doc/HTML/en/cantor/plot3d-dlg.png
 /usr/share/doc/HTML/en/cantor/screenshot.png
 /usr/share/doc/HTML/en/cantor/solve-equations-dlg.png
+/usr/share/doc/HTML/es/cantor/index.cache.bz2
+/usr/share/doc/HTML/es/cantor/index.docbook
+/usr/share/doc/HTML/es/cantor/screenshot.png
+/usr/share/doc/HTML/et/cantor/index.cache.bz2
+/usr/share/doc/HTML/et/cantor/index.docbook
+/usr/share/doc/HTML/fr/cantor/index.cache.bz2
+/usr/share/doc/HTML/fr/cantor/index.docbook
+/usr/share/doc/HTML/fr/cantor/screenshot.png
+/usr/share/doc/HTML/gl/cantor/index.cache.bz2
+/usr/share/doc/HTML/gl/cantor/index.docbook
+/usr/share/doc/HTML/it/cantor/index.cache.bz2
+/usr/share/doc/HTML/it/cantor/index.docbook
+/usr/share/doc/HTML/nl/cantor/index.cache.bz2
+/usr/share/doc/HTML/nl/cantor/index.docbook
+/usr/share/doc/HTML/pt/cantor/index.cache.bz2
+/usr/share/doc/HTML/pt/cantor/index.docbook
+/usr/share/doc/HTML/pt_BR/cantor/index.cache.bz2
+/usr/share/doc/HTML/pt_BR/cantor/index.docbook
+/usr/share/doc/HTML/pt_BR/cantor/screenshot.png
+/usr/share/doc/HTML/ru/cantor/index.cache.bz2
+/usr/share/doc/HTML/ru/cantor/index.docbook
+/usr/share/doc/HTML/sv/cantor/index.cache.bz2
+/usr/share/doc/HTML/sv/cantor/index.docbook
+/usr/share/doc/HTML/uk/cantor/create-dlg.png
+/usr/share/doc/HTML/uk/cantor/differentiate-dlg.png
+/usr/share/doc/HTML/uk/cantor/import-dlg.png
+/usr/share/doc/HTML/uk/cantor/index.cache.bz2
+/usr/share/doc/HTML/uk/cantor/index.docbook
+/usr/share/doc/HTML/uk/cantor/integrate-dlg.png
+/usr/share/doc/HTML/uk/cantor/matrix-dlg.png
+/usr/share/doc/HTML/uk/cantor/plot-dlg1.png
+/usr/share/doc/HTML/uk/cantor/plot-dlg2.png
+/usr/share/doc/HTML/uk/cantor/plot2d-dlg.png
+/usr/share/doc/HTML/uk/cantor/plot3d-dlg.png
+/usr/share/doc/HTML/uk/cantor/screenshot.png
+/usr/share/doc/HTML/uk/cantor/solve-equations-dlg.png
 
 %files lib
 %defattr(-,root,root,-)
@@ -281,3 +365,7 @@ popd
 /usr/share/package-licenses/cantor/COPYING
 /usr/share/package-licenses/cantor/COPYING.DOC
 /usr/share/package-licenses/cantor/cmake_COPYING-CMAKE-SCRIPTS
+
+%files locales -f cantor.lang
+%defattr(-,root,root,-)
+
