@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : cantor
-Version  : 18.12.2
-Release  : 12
-URL      : https://download.kde.org/stable/applications/18.12.2/src/cantor-18.12.2.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.12.2/src/cantor-18.12.2.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.12.2/src/cantor-18.12.2.tar.xz.sig
-Summary  : No detailed summary available
+Version  : 18.12.3
+Release  : 13
+URL      : https://download.kde.org/stable/applications/18.12.3/src/cantor-18.12.3.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.3/src/cantor-18.12.3.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.3/src/cantor-18.12.3.tar.xz.sig
+Summary  : KDE Frontend to Mathematical Software
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0
 Requires: cantor-bin = %{version}-%{release}
@@ -21,36 +21,14 @@ Requires: cantor-locales = %{version}-%{release}
 BuildRequires : R
 BuildRequires : R-dev
 BuildRequires : analitza-dev
-BuildRequires : attica-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : docbook-xml
 BuildRequires : extra-cmake-modules
 BuildRequires : gmp-dev
-BuildRequires : karchive-dev
 BuildRequires : kauth-dev
-BuildRequires : kbookmarks-dev
-BuildRequires : kcodecs-dev
-BuildRequires : kcompletion-dev
 BuildRequires : kconfig
-BuildRequires : kconfig-dev
-BuildRequires : kconfigwidgets-dev
-BuildRequires : kcoreaddons-dev
-BuildRequires : kcrash-dev
-BuildRequires : kdoctools-dev
-BuildRequires : ki18n-dev
-BuildRequires : kiconthemes-dev
-BuildRequires : kio-dev
-BuildRequires : kitemviews-dev
-BuildRequires : kjobwidgets-dev
-BuildRequires : knewstuff-dev
-BuildRequires : kparts-dev
-BuildRequires : kpty-dev
-BuildRequires : kservice-dev
 BuildRequires : ktexteditor-dev
-BuildRequires : ktextwidgets-dev
-BuildRequires : kwidgetsaddons-dev
-BuildRequires : kxmlgui-dev
 BuildRequires : libxml2
 BuildRequires : mesa-dev
 BuildRequires : mpfr-dev
@@ -64,8 +42,6 @@ BuildRequires : pkgconfig(luajit)
 BuildRequires : pkgconfig(python3)
 BuildRequires : python3-dev
 BuildRequires : qtbase-dev
-BuildRequires : solid-dev
-BuildRequires : sonnet-dev
 BuildRequires : syntax-highlighting-dev
 
 %description
@@ -100,6 +76,7 @@ Requires: cantor-lib = %{version}-%{release}
 Requires: cantor-bin = %{version}-%{release}
 Requires: cantor-data = %{version}-%{release}
 Provides: cantor-devel = %{version}-%{release}
+Requires: cantor = %{version}-%{release}
 
 %description dev
 dev components for the cantor package.
@@ -140,22 +117,23 @@ locales components for the cantor package.
 
 
 %prep
-%setup -q -n cantor-18.12.2
+%setup -q -n cantor-18.12.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1549878405
+export SOURCE_DATE_EPOCH=1551982522
 mkdir -p clr-build
 pushd clr-build
+export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1549878405
+export SOURCE_DATE_EPOCH=1551982522
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/cantor
 cp COPYING %{buildroot}/usr/share/package-licenses/cantor/COPYING
@@ -275,6 +253,8 @@ popd
 /usr/share/doc/HTML/ca/cantor/integrate-dlg.png
 /usr/share/doc/HTML/ca/cantor/latex_formula.png
 /usr/share/doc/HTML/ca/cantor/matrix-dlg.png
+/usr/share/doc/HTML/ca/cantor/plot-dlg1.png
+/usr/share/doc/HTML/ca/cantor/plot-dlg2.png
 /usr/share/doc/HTML/ca/cantor/plot2d-dlg.png
 /usr/share/doc/HTML/ca/cantor/plot3d-dlg.png
 /usr/share/doc/HTML/ca/cantor/screenshot.png
@@ -334,7 +314,7 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libcantorlibs.so.18.12.2
+/usr/lib64/libcantorlibs.so.18.12.3
 /usr/lib64/libcantorlibs.so.20
 /usr/lib64/qt5/plugins/cantor/assistants/cantor_advancedplotassistant.so
 /usr/lib64/qt5/plugins/cantor/assistants/cantor_creatematrixassistant.so
