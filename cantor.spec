@@ -6,7 +6,7 @@
 #
 Name     : cantor
 Version  : 19.04.0
-Release  : 15
+Release  : 16
 URL      : https://download.kde.org/stable/applications/19.04.0/src/cantor-19.04.0.tar.xz
 Source0  : https://download.kde.org/stable/applications/19.04.0/src/cantor-19.04.0.tar.xz
 Source99 : https://download.kde.org/stable/applications/19.04.0/src/cantor-19.04.0.tar.xz.sig
