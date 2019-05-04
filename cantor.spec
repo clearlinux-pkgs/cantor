@@ -6,13 +6,13 @@
 #
 Name     : cantor
 Version  : 19.04.0
-Release  : 16
+Release  : 17
 URL      : https://download.kde.org/stable/applications/19.04.0/src/cantor-19.04.0.tar.xz
 Source0  : https://download.kde.org/stable/applications/19.04.0/src/cantor-19.04.0.tar.xz
 Source99 : https://download.kde.org/stable/applications/19.04.0/src/cantor-19.04.0.tar.xz.sig
 Summary  : KDE Frontend to Mathematical Software
 Group    : Development/Tools
-License  : BSD-3-Clause GPL-2.0
+License  : BSD-3-Clause GFDL-1.2 GPL-2.0
 Requires: cantor-bin = %{version}-%{release}
 Requires: cantor-data = %{version}-%{release}
 Requires: cantor-lib = %{version}-%{release}
@@ -21,14 +21,36 @@ Requires: cantor-locales = %{version}-%{release}
 BuildRequires : R
 BuildRequires : R-dev
 BuildRequires : analitza-dev
+BuildRequires : attica-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : docbook-xml
 BuildRequires : extra-cmake-modules
 BuildRequires : gmp-dev
+BuildRequires : karchive-dev
 BuildRequires : kauth-dev
+BuildRequires : kbookmarks-dev
+BuildRequires : kcodecs-dev
+BuildRequires : kcompletion-dev
 BuildRequires : kconfig
+BuildRequires : kconfig-dev
+BuildRequires : kconfigwidgets-dev
+BuildRequires : kcoreaddons-dev
+BuildRequires : kcrash-dev
+BuildRequires : kdoctools-dev
+BuildRequires : ki18n-dev
+BuildRequires : kiconthemes-dev
+BuildRequires : kio-dev
+BuildRequires : kitemviews-dev
+BuildRequires : kjobwidgets-dev
+BuildRequires : knewstuff-dev
+BuildRequires : kparts-dev
+BuildRequires : kpty-dev
+BuildRequires : kservice-dev
 BuildRequires : ktexteditor-dev
+BuildRequires : ktextwidgets-dev
+BuildRequires : kwidgetsaddons-dev
+BuildRequires : kxmlgui-dev
 BuildRequires : libxml2
 BuildRequires : mesa-dev
 BuildRequires : mpfr-dev
@@ -42,6 +64,8 @@ BuildRequires : pkgconfig(luajit)
 BuildRequires : pkgconfig(python3)
 BuildRequires : python3-dev
 BuildRequires : qtbase-dev
+BuildRequires : solid-dev
+BuildRequires : sonnet-dev
 BuildRequires : syntax-highlighting-dev
 
 %description
@@ -124,18 +148,26 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1555598812
+export SOURCE_DATE_EPOCH=1556996946
 mkdir -p clr-build
 pushd clr-build
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1555598812
+export SOURCE_DATE_EPOCH=1556996946
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/cantor
 cp COPYING %{buildroot}/usr/share/package-licenses/cantor/COPYING
+cp COPYING.DOC %{buildroot}/usr/share/package-licenses/cantor/COPYING.DOC
 cp cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/cantor/cmake_COPYING-CMAKE-SCRIPTS
 pushd clr-build
 %make_install
@@ -349,6 +381,7 @@ popd
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/cantor/COPYING
+/usr/share/package-licenses/cantor/COPYING.DOC
 /usr/share/package-licenses/cantor/cmake_COPYING-CMAKE-SCRIPTS
 
 %files locales -f cantor.lang
