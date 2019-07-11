@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : cantor
-Version  : 19.04.2
-Release  : 20
-URL      : https://download.kde.org/stable/applications/19.04.2/src/cantor-19.04.2.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.04.2/src/cantor-19.04.2.tar.xz
-Source99 : https://download.kde.org/stable/applications/19.04.2/src/cantor-19.04.2.tar.xz.sig
+Version  : 19.04.3
+Release  : 21
+URL      : https://download.kde.org/stable/applications/19.04.3/src/cantor-19.04.3.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.04.3/src/cantor-19.04.3.tar.xz
+Source99 : https://download.kde.org/stable/applications/19.04.3/src/cantor-19.04.3.tar.xz.sig
 Summary  : KDE Frontend to Mathematical Software
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0
@@ -22,36 +22,14 @@ Requires: R
 BuildRequires : R
 BuildRequires : R-dev
 BuildRequires : analitza-dev
-BuildRequires : attica-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : docbook-xml
 BuildRequires : extra-cmake-modules
 BuildRequires : gmp-dev
-BuildRequires : karchive-dev
 BuildRequires : kauth-dev
-BuildRequires : kbookmarks-dev
-BuildRequires : kcodecs-dev
-BuildRequires : kcompletion-dev
 BuildRequires : kconfig
-BuildRequires : kconfig-dev
-BuildRequires : kconfigwidgets-dev
-BuildRequires : kcoreaddons-dev
-BuildRequires : kcrash-dev
-BuildRequires : kdoctools-dev
-BuildRequires : ki18n-dev
-BuildRequires : kiconthemes-dev
-BuildRequires : kio-dev
-BuildRequires : kitemviews-dev
-BuildRequires : kjobwidgets-dev
-BuildRequires : knewstuff-dev
-BuildRequires : kparts-dev
-BuildRequires : kpty-dev
-BuildRequires : kservice-dev
 BuildRequires : ktexteditor-dev
-BuildRequires : ktextwidgets-dev
-BuildRequires : kwidgetsaddons-dev
-BuildRequires : kxmlgui-dev
 BuildRequires : libxml2
 BuildRequires : mesa-dev
 BuildRequires : mpfr-dev
@@ -65,8 +43,6 @@ BuildRequires : pkgconfig(luajit)
 BuildRequires : pkgconfig(python3)
 BuildRequires : python3-dev
 BuildRequires : qtbase-dev
-BuildRequires : solid-dev
-BuildRequires : sonnet-dev
 BuildRequires : syntax-highlighting-dev
 
 %description
@@ -143,14 +119,14 @@ locales components for the cantor package.
 
 
 %prep
-%setup -q -n cantor-19.04.2
+%setup -q -n cantor-19.04.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1562224967
+export SOURCE_DATE_EPOCH=1562853064
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -166,7 +142,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1562224967
+export SOURCE_DATE_EPOCH=1562853064
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/cantor
 cp COPYING %{buildroot}/usr/share/package-licenses/cantor/COPYING
@@ -352,7 +328,7 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libcantorlibs.so.19.04.2
+/usr/lib64/libcantorlibs.so.19.04.3
 /usr/lib64/libcantorlibs.so.20
 /usr/lib64/qt5/plugins/cantor/assistants/cantor_advancedplotassistant.so
 /usr/lib64/qt5/plugins/cantor/assistants/cantor_creatematrixassistant.so
