@@ -1,1 +1,1 @@
--DR_SHARED_LIB_DIR=/usr/lib64/R
+-DCMAKE_INSTALL_RPATH=/usr/lib64/R
