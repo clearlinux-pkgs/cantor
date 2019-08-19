@@ -6,7 +6,7 @@
 #
 Name     : cantor
 Version  : 19.08.0
-Release  : 24
+Release  : 25
 URL      : https://download.kde.org/stable/applications/19.08.0/src/cantor-19.08.0.tar.xz
 Source0  : https://download.kde.org/stable/applications/19.08.0/src/cantor-19.08.0.tar.xz
 Source1 : https://download.kde.org/stable/applications/19.08.0/src/cantor-19.08.0.tar.xz.sig
@@ -18,40 +18,15 @@ Requires: cantor-data = %{version}-%{release}
 Requires: cantor-lib = %{version}-%{release}
 Requires: cantor-license = %{version}-%{release}
 Requires: cantor-locales = %{version}-%{release}
-Requires: R
-BuildRequires : R
-BuildRequires : R-dev
 BuildRequires : analitza-dev
-BuildRequires : attica-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : docbook-xml
 BuildRequires : extra-cmake-modules
 BuildRequires : gmp-dev
-BuildRequires : karchive-dev
 BuildRequires : kauth-dev
-BuildRequires : kbookmarks-dev
-BuildRequires : kcodecs-dev
-BuildRequires : kcompletion-dev
 BuildRequires : kconfig
-BuildRequires : kconfig-dev
-BuildRequires : kconfigwidgets-dev
-BuildRequires : kcoreaddons-dev
-BuildRequires : kcrash-dev
-BuildRequires : kdoctools-dev
-BuildRequires : ki18n-dev
-BuildRequires : kiconthemes-dev
-BuildRequires : kio-dev
-BuildRequires : kitemviews-dev
-BuildRequires : kjobwidgets-dev
-BuildRequires : knewstuff-dev
-BuildRequires : kparts-dev
-BuildRequires : kpty-dev
-BuildRequires : kservice-dev
 BuildRequires : ktexteditor-dev
-BuildRequires : ktextwidgets-dev
-BuildRequires : kwidgetsaddons-dev
-BuildRequires : kxmlgui-dev
 BuildRequires : libxml2
 BuildRequires : mesa-dev
 BuildRequires : mpfr-dev
@@ -65,8 +40,6 @@ BuildRequires : pkgconfig(luajit)
 BuildRequires : pkgconfig(python3)
 BuildRequires : python3-dev
 BuildRequires : qtbase-dev
-BuildRequires : solid-dev
-BuildRequires : sonnet-dev
 BuildRequires : syntax-highlighting-dev
 
 %description
@@ -149,7 +122,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1565897798
+export SOURCE_DATE_EPOCH=1566233790
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -160,12 +133,12 @@ export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
-%cmake .. -DCMAKE_INSTALL_RPATH=/usr/lib64/R
+%cmake ..
 make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1565897798
+export SOURCE_DATE_EPOCH=1566233790
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/cantor
 cp COPYING %{buildroot}/usr/share/package-licenses/cantor/COPYING
@@ -183,7 +156,6 @@ popd
 %defattr(-,root,root,-)
 /usr/bin/cantor
 /usr/bin/cantor_python3server
-/usr/bin/cantor_rserver
 /usr/bin/cantor_scripteditor
 
 %files data
@@ -204,7 +176,6 @@ popd
 /usr/share/config.kcfg/octavebackend.kcfg
 /usr/share/config.kcfg/python3backend.kcfg
 /usr/share/config.kcfg/qalculatebackend.kcfg
-/usr/share/config.kcfg/rserver.kcfg
 /usr/share/config.kcfg/sagebackend.kcfg
 /usr/share/config.kcfg/scilabbackend.kcfg
 /usr/share/icons/hicolor/128x128/apps/cantor.png
@@ -247,7 +218,6 @@ popd
 /usr/share/xdg/cantor_octave.knsrc
 /usr/share/xdg/cantor_python3.knsrc
 /usr/share/xdg/cantor_qalculate.knsrc
-/usr/share/xdg/cantor_r.knsrc
 /usr/share/xdg/cantor_sage.knsrc
 /usr/share/xdg/cantor_scilab.knsrc
 
@@ -373,7 +343,6 @@ popd
 /usr/lib64/qt5/plugins/cantor/backends/cantor_octavebackend.so
 /usr/lib64/qt5/plugins/cantor/backends/cantor_python3backend.so
 /usr/lib64/qt5/plugins/cantor/backends/cantor_qalculatebackend.so
-/usr/lib64/qt5/plugins/cantor/backends/cantor_rbackend.so
 /usr/lib64/qt5/plugins/cantor/backends/cantor_sagebackend.so
 /usr/lib64/qt5/plugins/cantor/backends/cantor_scilabbackend.so
 /usr/lib64/qt5/plugins/cantor/panels/cantor_helppanelplugin.so
