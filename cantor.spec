@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : cantor
-Version  : 19.08.0
-Release  : 25
-URL      : https://download.kde.org/stable/applications/19.08.0/src/cantor-19.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.08.0/src/cantor-19.08.0.tar.xz
-Source1 : https://download.kde.org/stable/applications/19.08.0/src/cantor-19.08.0.tar.xz.sig
-Summary  : No detailed summary available
+Version  : 19.08.1
+Release  : 26
+URL      : https://download.kde.org/stable/applications/19.08.1/src/cantor-19.08.1.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.08.1/src/cantor-19.08.1.tar.xz
+Source1 : https://download.kde.org/stable/applications/19.08.1/src/cantor-19.08.1.tar.xz.sig
+Summary  : KDE Frontend to Mathematical Software
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0
 Requires: cantor-bin = %{version}-%{release}
@@ -75,6 +75,7 @@ Requires: cantor-bin = %{version}-%{release}
 Requires: cantor-data = %{version}-%{release}
 Provides: cantor-devel = %{version}-%{release}
 Requires: cantor = %{version}-%{release}
+Requires: cantor = %{version}-%{release}
 
 %description dev
 dev components for the cantor package.
@@ -115,16 +116,17 @@ locales components for the cantor package.
 
 
 %prep
-%setup -q -n cantor-19.08.0
+%setup -q -n cantor-19.08.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1566233790
+export SOURCE_DATE_EPOCH=1567691901
 mkdir -p clr-build
 pushd clr-build
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -138,7 +140,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1566233790
+export SOURCE_DATE_EPOCH=1567691901
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/cantor
 cp COPYING %{buildroot}/usr/share/package-licenses/cantor/COPYING
@@ -321,7 +323,7 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libcantorlibs.so.19.08.0
+/usr/lib64/libcantorlibs.so.19.08.1
 /usr/lib64/libcantorlibs.so.23
 /usr/lib64/qt5/plugins/cantor/assistants/cantor_advancedplotassistant.so
 /usr/lib64/qt5/plugins/cantor/assistants/cantor_creatematrixassistant.so
