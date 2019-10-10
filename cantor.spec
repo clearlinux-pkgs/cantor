@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : cantor
-Version  : 19.08.1
-Release  : 26
-URL      : https://download.kde.org/stable/applications/19.08.1/src/cantor-19.08.1.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.08.1/src/cantor-19.08.1.tar.xz
-Source1 : https://download.kde.org/stable/applications/19.08.1/src/cantor-19.08.1.tar.xz.sig
+Version  : 19.08.2
+Release  : 27
+URL      : https://download.kde.org/stable/applications/19.08.2/src/cantor-19.08.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.08.2/src/cantor-19.08.2.tar.xz
+Source1 : https://download.kde.org/stable/applications/19.08.2/src/cantor-19.08.2.tar.xz.sig
 Summary  : KDE Frontend to Mathematical Software
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0
@@ -116,14 +116,14 @@ locales components for the cantor package.
 
 
 %prep
-%setup -q -n cantor-19.08.1
+%setup -q -n cantor-19.08.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1567691901
+export SOURCE_DATE_EPOCH=1570732115
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -136,11 +136,11 @@ export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1567691901
+export SOURCE_DATE_EPOCH=1570732115
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/cantor
 cp COPYING %{buildroot}/usr/share/package-licenses/cantor/COPYING
@@ -323,7 +323,7 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libcantorlibs.so.19.08.1
+/usr/lib64/libcantorlibs.so.19.08.2
 /usr/lib64/libcantorlibs.so.23
 /usr/lib64/qt5/plugins/cantor/assistants/cantor_advancedplotassistant.so
 /usr/lib64/qt5/plugins/cantor/assistants/cantor_creatematrixassistant.so
