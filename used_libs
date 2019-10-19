@@ -30,6 +30,6 @@ libc.so.6
 libgcc_s.so.1
 libluajit-5.1.so.2
 libpython3.7m.so.1.0
-libqalculate.so.19
+libqalculate.so.21
 libspectre.so.1
 libstdc++.so.6

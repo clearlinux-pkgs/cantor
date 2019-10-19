@@ -6,11 +6,11 @@
 #
 Name     : cantor
 Version  : 19.08.2
-Release  : 27
+Release  : 28
 URL      : https://download.kde.org/stable/applications/19.08.2/src/cantor-19.08.2.tar.xz
 Source0  : https://download.kde.org/stable/applications/19.08.2/src/cantor-19.08.2.tar.xz
 Source1 : https://download.kde.org/stable/applications/19.08.2/src/cantor-19.08.2.tar.xz.sig
-Summary  : KDE Frontend to Mathematical Software
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0
 Requires: cantor-bin = %{version}-%{release}
@@ -75,7 +75,6 @@ Requires: cantor-bin = %{version}-%{release}
 Requires: cantor-data = %{version}-%{release}
 Provides: cantor-devel = %{version}-%{release}
 Requires: cantor = %{version}-%{release}
-Requires: cantor = %{version}-%{release}
 
 %description dev
 dev components for the cantor package.
@@ -123,10 +122,9 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570732115
+export SOURCE_DATE_EPOCH=1571462404
 mkdir -p clr-build
 pushd clr-build
-# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -140,12 +138,12 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1570732115
+export SOURCE_DATE_EPOCH=1571462404
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/cantor
-cp COPYING %{buildroot}/usr/share/package-licenses/cantor/COPYING
-cp COPYING.DOC %{buildroot}/usr/share/package-licenses/cantor/COPYING.DOC
-cp cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/cantor/cmake_COPYING-CMAKE-SCRIPTS
+cp %{_builddir}/cantor-19.08.2/COPYING %{buildroot}/usr/share/package-licenses/cantor/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/cantor-19.08.2/COPYING.DOC %{buildroot}/usr/share/package-licenses/cantor/0c4be15f5177aafffe980ca09c0f4ca6ed741f43
+cp %{_builddir}/cantor-19.08.2/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/cantor/ff3ed70db4739b3c6747c7f624fe2bad70802987
 pushd clr-build
 %make_install
 popd
@@ -353,9 +351,9 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/cantor/COPYING
-/usr/share/package-licenses/cantor/COPYING.DOC
-/usr/share/package-licenses/cantor/cmake_COPYING-CMAKE-SCRIPTS
+/usr/share/package-licenses/cantor/0c4be15f5177aafffe980ca09c0f4ca6ed741f43
+/usr/share/package-licenses/cantor/4cc77b90af91e615a64ae04893fdffa7939db84c
+/usr/share/package-licenses/cantor/ff3ed70db4739b3c6747c7f624fe2bad70802987
 
 %files locales -f cantor.lang
 %defattr(-,root,root,-)
