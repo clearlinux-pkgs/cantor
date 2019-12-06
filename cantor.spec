@@ -6,7 +6,7 @@
 #
 Name     : cantor
 Version  : 19.08.3
-Release  : 29
+Release  : 30
 URL      : https://download.kde.org/stable/applications/19.08.3/src/cantor-19.08.3.tar.xz
 Source0  : https://download.kde.org/stable/applications/19.08.3/src/cantor-19.08.3.tar.xz
 Source1 : https://download.kde.org/stable/applications/19.08.3/src/cantor-19.08.3.tar.xz.sig
