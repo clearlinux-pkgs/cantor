@@ -22,6 +22,7 @@ libKF5WidgetsAddons.so.5
 libKF5XmlGui.so.5
 libQt5Core.so.5
 libQt5Gui.so.5
+libQt5Network.so.5
 libQt5PrintSupport.so.5
 libQt5Widgets.so.5
 libQt5Xml.so.5
@@ -29,7 +30,8 @@ libQt5XmlPatterns.so.5
 libc.so.6
 libgcc_s.so.1
 libluajit-5.1.so.2
-libpython3.7m.so.1.0
+libpoppler-qt5.so.1
+libpython3.8.so.1.0
 libqalculate.so.21
 libspectre.so.1
 libstdc++.so.6
