@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : cantor
-Version  : 19.12.3
-Release  : 34
-URL      : https://download.kde.org/stable/release-service/19.12.3/src/cantor-19.12.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/19.12.3/src/cantor-19.12.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/19.12.3/src/cantor-19.12.3.tar.xz.sig
+Version  : 20.04.0
+Release  : 35
+URL      : https://download.kde.org/stable/release-service/20.04.0/src/cantor-20.04.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.04.0/src/cantor-20.04.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.04.0/src/cantor-20.04.0.tar.xz.sig
 Summary  : KDE Frontend to Mathematical Software
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0
@@ -40,7 +40,6 @@ BuildRequires : pkgconfig(libspectre)
 BuildRequires : pkgconfig(luajit)
 BuildRequires : pkgconfig(python3)
 BuildRequires : poppler-dev
-BuildRequires : python3-dev
 BuildRequires : qtbase-dev
 BuildRequires : sed
 BuildRequires : syntax-highlighting-dev
@@ -120,15 +119,15 @@ locales components for the cantor package.
 
 
 %prep
-%setup -q -n cantor-19.12.3
-cd %{_builddir}/cantor-19.12.3
+%setup -q -n cantor-20.04.0
+cd %{_builddir}/cantor-20.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583432611
+export SOURCE_DATE_EPOCH=1587671209
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -145,12 +144,12 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1583432611
+export SOURCE_DATE_EPOCH=1587671209
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/cantor
-cp %{_builddir}/cantor-19.12.3/COPYING %{buildroot}/usr/share/package-licenses/cantor/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/cantor-19.12.3/COPYING.DOC %{buildroot}/usr/share/package-licenses/cantor/0c4be15f5177aafffe980ca09c0f4ca6ed741f43
-cp %{_builddir}/cantor-19.12.3/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/cantor/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/cantor-20.04.0/COPYING %{buildroot}/usr/share/package-licenses/cantor/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/cantor-20.04.0/COPYING.DOC %{buildroot}/usr/share/package-licenses/cantor/0c4be15f5177aafffe980ca09c0f4ca6ed741f43
+cp %{_builddir}/cantor-20.04.0/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/cantor/ff3ed70db4739b3c6747c7f624fe2bad70802987
 pushd clr-build
 %make_install
 popd
@@ -162,7 +161,7 @@ popd
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/cantor
-/usr/bin/cantor_python3server
+/usr/bin/cantor_pythonserver
 /usr/bin/cantor_scripteditor
 
 %files data
@@ -182,7 +181,7 @@ popd
 /usr/share/config.kcfg/luabackend.kcfg
 /usr/share/config.kcfg/maximabackend.kcfg
 /usr/share/config.kcfg/octavebackend.kcfg
-/usr/share/config.kcfg/python3backend.kcfg
+/usr/share/config.kcfg/pythonbackend.kcfg
 /usr/share/config.kcfg/qalculatebackend.kcfg
 /usr/share/config.kcfg/sagebackend.kcfg
 /usr/share/config.kcfg/scilabbackend.kcfg
@@ -224,7 +223,7 @@ popd
 /usr/share/xdg/cantor_lua.knsrc
 /usr/share/xdg/cantor_maxima.knsrc
 /usr/share/xdg/cantor_octave.knsrc
-/usr/share/xdg/cantor_python3.knsrc
+/usr/share/xdg/cantor_python.knsrc
 /usr/share/xdg/cantor_qalculate.knsrc
 /usr/share/xdg/cantor_sage.knsrc
 /usr/share/xdg/cantor_scilab.knsrc
@@ -254,12 +253,12 @@ popd
 /usr/include/cantor/syntaxhelpobject.h
 /usr/include/cantor/textresult.h
 /usr/include/cantor/worksheetaccess.h
+/usr/lib64/cantor_pythonbackend.so
 /usr/lib64/cmake/Cantor/CantorConfig.cmake
 /usr/lib64/cmake/Cantor/CantorConfigVersion.cmake
 /usr/lib64/cmake/Cantor/CantorTargets-relwithdebinfo.cmake
 /usr/lib64/cmake/Cantor/CantorTargets.cmake
 /usr/lib64/libcantor_config.so
-/usr/lib64/libcantor_pythonbackend.so
 /usr/lib64/libcantorlibs.so
 
 %files doc
@@ -333,7 +332,7 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libcantorlibs.so.19.12.3
+/usr/lib64/libcantorlibs.so.20.04.0
 /usr/lib64/libcantorlibs.so.24
 /usr/lib64/qt5/plugins/cantor/assistants/cantor_advancedplotassistant.so
 /usr/lib64/qt5/plugins/cantor/assistants/cantor_creatematrixassistant.so
@@ -352,7 +351,7 @@ popd
 /usr/lib64/qt5/plugins/cantor/backends/cantor_luabackend.so
 /usr/lib64/qt5/plugins/cantor/backends/cantor_maximabackend.so
 /usr/lib64/qt5/plugins/cantor/backends/cantor_octavebackend.so
-/usr/lib64/qt5/plugins/cantor/backends/cantor_python3backend.so
+/usr/lib64/qt5/plugins/cantor/backends/cantor_pythonbackend.so
 /usr/lib64/qt5/plugins/cantor/backends/cantor_qalculatebackend.so
 /usr/lib64/qt5/plugins/cantor/backends/cantor_sagebackend.so
 /usr/lib64/qt5/plugins/cantor/backends/cantor_scilabbackend.so
