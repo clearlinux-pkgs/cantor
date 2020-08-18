@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : cantor
-Version  : 20.04.2
-Release  : 37
-URL      : https://download.kde.org/stable/release-service/20.04.2/src/cantor-20.04.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/20.04.2/src/cantor-20.04.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/20.04.2/src/cantor-20.04.2.tar.xz.sig
+Version  : 20.08.0
+Release  : 38
+URL      : https://download.kde.org/stable/release-service/20.08.0/src/cantor-20.08.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.08.0/src/cantor-20.08.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.08.0/src/cantor-20.08.0.tar.xz.sig
 Summary  : C implementation of John Gruber's Markdown markup language
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0
@@ -119,15 +119,15 @@ locales components for the cantor package.
 
 
 %prep
-%setup -q -n cantor-20.04.2
-cd %{_builddir}/cantor-20.04.2
+%setup -q -n cantor-20.08.0
+cd %{_builddir}/cantor-20.08.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1591889381
+export SOURCE_DATE_EPOCH=1597771315
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -139,16 +139,16 @@ export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags}  VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1591889381
+export SOURCE_DATE_EPOCH=1597771315
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/cantor
-cp %{_builddir}/cantor-20.04.2/COPYING %{buildroot}/usr/share/package-licenses/cantor/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/cantor-20.04.2/COPYING.DOC %{buildroot}/usr/share/package-licenses/cantor/0c4be15f5177aafffe980ca09c0f4ca6ed741f43
-cp %{_builddir}/cantor-20.04.2/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/cantor/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/cantor-20.08.0/COPYING %{buildroot}/usr/share/package-licenses/cantor/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/cantor-20.08.0/COPYING.DOC %{buildroot}/usr/share/package-licenses/cantor/0c4be15f5177aafffe980ca09c0f4ca6ed741f43
+cp %{_builddir}/cantor-20.08.0/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/cantor/ff3ed70db4739b3c6747c7f624fe2bad70802987
 pushd clr-build
 %make_install
 popd
@@ -168,10 +168,12 @@ popd
 /usr/share/applications/org.kde.cantor.desktop
 /usr/share/cantor/latex/preview.sty
 /usr/share/cantor/maximabackend/cantor-initmaxima.lisp
+/usr/share/cantor/octave/graphic_packages.xml
 /usr/share/cantor/octavebackend/cantor_eigenvectors.m
 /usr/share/cantor/octavebackend/cantor_plot2d.m
 /usr/share/cantor/octavebackend/cantor_plot3d.m
 /usr/share/cantor/octavebackend/cantor_print.m
+/usr/share/cantor/python/graphic_packages.xml
 /usr/share/cantor/sagebackend/cantor-execsage
 /usr/share/cantor/xslt/latex.xsl
 /usr/share/config.kcfg/cantor.kcfg
@@ -240,6 +242,7 @@ popd
 /usr/include/cantor/epsresult.h
 /usr/include/cantor/expression.h
 /usr/include/cantor/extension.h
+/usr/include/cantor/graphicpackage.h
 /usr/include/cantor/helpresult.h
 /usr/include/cantor/htmlresult.h
 /usr/include/cantor/imageresult.h
@@ -268,7 +271,6 @@ popd
 /usr/share/doc/HTML/ca/cantor/index.cache.bz2
 /usr/share/doc/HTML/ca/cantor/index.docbook
 /usr/share/doc/HTML/ca/cantor/integrate-dlg.png
-/usr/share/doc/HTML/ca/cantor/latex_formula.png
 /usr/share/doc/HTML/ca/cantor/matrix-dlg.png
 /usr/share/doc/HTML/ca/cantor/plot-dlg1.png
 /usr/share/doc/HTML/ca/cantor/plot-dlg2.png
@@ -331,8 +333,8 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libcantorlibs.so.20.04.2
-/usr/lib64/libcantorlibs.so.24
+/usr/lib64/libcantorlibs.so.20.08.0
+/usr/lib64/libcantorlibs.so.27
 /usr/lib64/qt5/plugins/cantor/assistants/cantor_advancedplotassistant.so
 /usr/lib64/qt5/plugins/cantor/assistants/cantor_creatematrixassistant.so
 /usr/lib64/qt5/plugins/cantor/assistants/cantor_differentiateassistant.so
@@ -354,6 +356,7 @@ popd
 /usr/lib64/qt5/plugins/cantor/backends/cantor_qalculatebackend.so
 /usr/lib64/qt5/plugins/cantor/backends/cantor_sagebackend.so
 /usr/lib64/qt5/plugins/cantor/backends/cantor_scilabbackend.so
+/usr/lib64/qt5/plugins/cantor/panels/cantor_filebrowserpanelplugin.so
 /usr/lib64/qt5/plugins/cantor/panels/cantor_helppanelplugin.so
 /usr/lib64/qt5/plugins/cantor/panels/cantor_variablemanagerplugin.so
 /usr/lib64/qt5/plugins/libcantorpart.so
