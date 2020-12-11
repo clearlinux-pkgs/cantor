@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : cantor
-Version  : 20.08.3
-Release  : 40
-URL      : https://download.kde.org/stable/release-service/20.08.3/src/cantor-20.08.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/20.08.3/src/cantor-20.08.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/20.08.3/src/cantor-20.08.3.tar.xz.sig
+Version  : 20.12.0
+Release  : 41
+URL      : https://download.kde.org/stable/release-service/20.12.0/src/cantor-20.12.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.12.0/src/cantor-20.12.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.12.0/src/cantor-20.12.0.tar.xz.sig
 Summary  : C implementation of John Gruber's Markdown markup language
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0
@@ -39,8 +39,8 @@ BuildRequires : pkgconfig(cln)
 BuildRequires : pkgconfig(libqalculate)
 BuildRequires : pkgconfig(libspectre)
 BuildRequires : pkgconfig(luajit)
-BuildRequires : pkgconfig(python3)
 BuildRequires : poppler-dev
+BuildRequires : python3-dev
 BuildRequires : qtbase-dev
 BuildRequires : sed
 BuildRequires : syntax-highlighting-dev
@@ -119,15 +119,15 @@ locales components for the cantor package.
 
 
 %prep
-%setup -q -n cantor-20.08.3
-cd %{_builddir}/cantor-20.08.3
+%setup -q -n cantor-20.12.0
+cd %{_builddir}/cantor-20.12.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1604591450
+export SOURCE_DATE_EPOCH=1607704540
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -143,12 +143,12 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1604591450
+export SOURCE_DATE_EPOCH=1607704540
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/cantor
-cp %{_builddir}/cantor-20.08.3/COPYING %{buildroot}/usr/share/package-licenses/cantor/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/cantor-20.08.3/COPYING.DOC %{buildroot}/usr/share/package-licenses/cantor/0c4be15f5177aafffe980ca09c0f4ca6ed741f43
-cp %{_builddir}/cantor-20.08.3/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/cantor/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/cantor-20.12.0/COPYING %{buildroot}/usr/share/package-licenses/cantor/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/cantor-20.12.0/COPYING.DOC %{buildroot}/usr/share/package-licenses/cantor/0c4be15f5177aafffe980ca09c0f4ca6ed741f43
+cp %{_builddir}/cantor-20.12.0/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/cantor/ff3ed70db4739b3c6747c7f624fe2bad70802987
 pushd clr-build
 %make_install
 popd
@@ -202,6 +202,15 @@ popd
 /usr/share/icons/hicolor/48x48/apps/sagebackend.png
 /usr/share/icons/hicolor/48x48/apps/scilabbackend.png
 /usr/share/icons/hicolor/64x64/apps/cantor.png
+/usr/share/knsrcfiles/cantor.knsrc
+/usr/share/knsrcfiles/cantor_kalgebra.knsrc
+/usr/share/knsrcfiles/cantor_lua.knsrc
+/usr/share/knsrcfiles/cantor_maxima.knsrc
+/usr/share/knsrcfiles/cantor_octave.knsrc
+/usr/share/knsrcfiles/cantor_python.knsrc
+/usr/share/knsrcfiles/cantor_qalculate.knsrc
+/usr/share/knsrcfiles/cantor_sage.knsrc
+/usr/share/knsrcfiles/cantor_scilab.knsrc
 /usr/share/kxmlgui5/cantor/cantor_advancedplot_assistant.rc
 /usr/share/kxmlgui5/cantor/cantor_create_matrix_assistant.rc
 /usr/share/kxmlgui5/cantor/cantor_differentiate_assistant.rc
@@ -219,15 +228,6 @@ popd
 /usr/share/kxmlgui5/cantor/cantor_shell.rc
 /usr/share/kxmlgui5/cantor/cantor_solve_assistant.rc
 /usr/share/metainfo/org.kde.cantor.appdata.xml
-/usr/share/xdg/cantor.knsrc
-/usr/share/xdg/cantor_kalgebra.knsrc
-/usr/share/xdg/cantor_lua.knsrc
-/usr/share/xdg/cantor_maxima.knsrc
-/usr/share/xdg/cantor_octave.knsrc
-/usr/share/xdg/cantor_python.knsrc
-/usr/share/xdg/cantor_qalculate.knsrc
-/usr/share/xdg/cantor_sage.knsrc
-/usr/share/xdg/cantor_scilab.knsrc
 
 %files dev
 %defattr(-,root,root,-)
@@ -249,6 +249,8 @@ popd
 /usr/include/cantor/jupyterutils.h
 /usr/include/cantor/latexresult.h
 /usr/include/cantor/mimeresult.h
+/usr/include/cantor/panelplugin.h
+/usr/include/cantor/panelpluginhandler.h
 /usr/include/cantor/renderer.h
 /usr/include/cantor/result.h
 /usr/include/cantor/session.h
@@ -333,8 +335,8 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libcantorlibs.so.20.08.3
-/usr/lib64/libcantorlibs.so.27
+/usr/lib64/libcantorlibs.so.20.12.0
+/usr/lib64/libcantorlibs.so.28
 /usr/lib64/qt5/plugins/cantor/assistants/cantor_advancedplotassistant.so
 /usr/lib64/qt5/plugins/cantor/assistants/cantor_creatematrixassistant.so
 /usr/lib64/qt5/plugins/cantor/assistants/cantor_differentiateassistant.so
@@ -358,6 +360,7 @@ popd
 /usr/lib64/qt5/plugins/cantor/backends/cantor_scilabbackend.so
 /usr/lib64/qt5/plugins/cantor/panels/cantor_filebrowserpanelplugin.so
 /usr/lib64/qt5/plugins/cantor/panels/cantor_helppanelplugin.so
+/usr/lib64/qt5/plugins/cantor/panels/cantor_tocpanelplugin.so
 /usr/lib64/qt5/plugins/cantor/panels/cantor_variablemanagerplugin.so
 /usr/lib64/qt5/plugins/libcantorpart.so
 
