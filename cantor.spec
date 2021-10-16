@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : cantor
-Version  : 21.08.1
-Release  : 50
-URL      : https://download.kde.org/stable/release-service/21.08.1/src/cantor-21.08.1.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.08.1/src/cantor-21.08.1.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.08.1/src/cantor-21.08.1.tar.xz.sig
+Version  : 21.08.2
+Release  : 51
+URL      : https://download.kde.org/stable/release-service/21.08.2/src/cantor-21.08.2.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.08.2/src/cantor-21.08.2.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.08.2/src/cantor-21.08.2.tar.xz.sig
 Summary  : C implementation of John Gruber's Markdown markup language
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0 GPL-3.0
@@ -121,15 +121,15 @@ locales components for the cantor package.
 
 
 %prep
-%setup -q -n cantor-21.08.1
-cd %{_builddir}/cantor-21.08.1
+%setup -q -n cantor-21.08.2
+cd %{_builddir}/cantor-21.08.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1630906432
+export SOURCE_DATE_EPOCH=1634350575
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -145,18 +145,18 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1630906432
+export SOURCE_DATE_EPOCH=1634350575
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/cantor
-cp %{_builddir}/cantor-21.08.1/COPYING %{buildroot}/usr/share/package-licenses/cantor/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/cantor-21.08.1/COPYING.DOC %{buildroot}/usr/share/package-licenses/cantor/0c4be15f5177aafffe980ca09c0f4ca6ed741f43
-cp %{_builddir}/cantor-21.08.1/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/cantor/f1946dab78e58c04c8c25ec6b074f5fc5c2830fe
-cp %{_builddir}/cantor-21.08.1/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/cantor/3e8971c6c5f16674958913a94a36b1ea7a00ac46
-cp %{_builddir}/cantor-21.08.1/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/cantor/3e8971c6c5f16674958913a94a36b1ea7a00ac46
-cp %{_builddir}/cantor-21.08.1/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/cantor/2123756e0b1fc8243547235a33c0fcabfe3b9a51
-cp %{_builddir}/cantor-21.08.1/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/cantor/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/cantor-21.08.1/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/cantor/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/cantor-21.08.1/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/cantor/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/cantor-21.08.2/COPYING %{buildroot}/usr/share/package-licenses/cantor/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/cantor-21.08.2/COPYING.DOC %{buildroot}/usr/share/package-licenses/cantor/0c4be15f5177aafffe980ca09c0f4ca6ed741f43
+cp %{_builddir}/cantor-21.08.2/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/cantor/f1946dab78e58c04c8c25ec6b074f5fc5c2830fe
+cp %{_builddir}/cantor-21.08.2/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/cantor/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+cp %{_builddir}/cantor-21.08.2/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/cantor/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+cp %{_builddir}/cantor-21.08.2/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/cantor/2123756e0b1fc8243547235a33c0fcabfe3b9a51
+cp %{_builddir}/cantor-21.08.2/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/cantor/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/cantor-21.08.2/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/cantor/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/cantor-21.08.2/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/cantor/ff3ed70db4739b3c6747c7f624fe2bad70802987
 pushd clr-build
 %make_install
 popd
@@ -345,7 +345,7 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libcantorlibs.so.21.08.1
+/usr/lib64/libcantorlibs.so.21.08.2
 /usr/lib64/libcantorlibs.so.28
 /usr/lib64/qt5/plugins/cantor/assistants/cantor_advancedplotassistant.so
 /usr/lib64/qt5/plugins/cantor/assistants/cantor_creatematrixassistant.so
