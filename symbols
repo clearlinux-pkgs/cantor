@@ -86,6 +86,7 @@ libcantorlibs.so.28:_ZN6Cantor10MimeResultD0Ev
 libcantorlibs.so.28:_ZN6Cantor10MimeResultD1Ev
 libcantorlibs.so.28:_ZN6Cantor10MimeResultD2Ev
 libcantorlibs.so.28:_ZN6Cantor10TextResult11jupyterTextERK7QStringb
+libcantorlibs.so.28:_ZN6Cantor10TextResult12setIsWarningEb
 libcantorlibs.so.28:_ZN6Cantor10TextResult13toJupyterJsonEv
 libcantorlibs.so.28:_ZN6Cantor10TextResult4dataEv
 libcantorlibs.so.28:_ZN6Cantor10TextResult4saveERK7QString
@@ -534,6 +535,7 @@ libcantorlibs.so.28:_ZN6Cantor9ExtensionC2ERK7QStringP7QObject
 libcantorlibs.so.28:_ZNK6Cantor10Expression10metaObjectEv
 libcantorlibs.so.28:_ZNK6Cantor10Expression7resultsEv
 libcantorlibs.so.28:_ZNK6Cantor10TextResult8isStderrEv
+libcantorlibs.so.28:_ZNK6Cantor10TextResult9isWarningEv
 libcantorlibs.so.28:_ZNK6Cantor11PanelPlugin10metaObjectEv
 libcantorlibs.so.28:_ZNK6Cantor12CASExtension10metaObjectEv
 libcantorlibs.so.28:_ZNK6Cantor13LatexRenderer10metaObjectEv
