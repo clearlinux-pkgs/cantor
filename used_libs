@@ -14,6 +14,8 @@ libKF5KIOFileWidgets.so.5
 libKF5KIOGui.so.5
 libKF5KIOWidgets.so.5
 libKF5NewStuff.so.5
+libKF5NewStuffCore.so.5
+libKF5NewStuffWidgets.so.5
 libKF5Parts.so.5
 libKF5Pty.so.5
 libKF5SyntaxHighlighting.so.5
