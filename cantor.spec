@@ -6,7 +6,7 @@
 #
 Name     : cantor
 Version  : 22.12.0
-Release  : 68
+Release  : 69
 URL      : https://download.kde.org/stable/release-service/22.12.0/src/cantor-22.12.0.tar.xz
 Source0  : https://download.kde.org/stable/release-service/22.12.0/src/cantor-22.12.0.tar.xz
 Source1  : https://download.kde.org/stable/release-service/22.12.0/src/cantor-22.12.0.tar.xz.sig
