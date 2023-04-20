@@ -36,6 +36,7 @@ libcantorlibs.so.28:_ZN6Cantor10Expression7sessionEv
 libcantorlibs.so.28:_ZN6Cantor10Expression9addResultEPNS_6ResultE
 libcantorlibs.so.28:_ZN6Cantor10Expression9gotResultEv
 libcantorlibs.so.28:_ZN6Cantor10Expression9idChangedEv
+libcantorlibs.so.28:_ZN6Cantor10Expression9interruptEv
 libcantorlibs.so.28:_ZN6Cantor10Expression9setResultEPNS_6ResultE
 libcantorlibs.so.28:_ZN6Cantor10Expression9setStatusENS0_6StatusE
 libcantorlibs.so.28:_ZN6Cantor10ExpressionC1EPNS_7SessionEb
@@ -120,6 +121,7 @@ libcantorlibs.so.28:_ZN6Cantor11ImageResult5toXmlER12QDomDocument
 libcantorlibs.so.28:_ZN6Cantor11ImageResult6toHtmlEv
 libcantorlibs.so.28:_ZN6Cantor11ImageResult7toLatexEv
 libcantorlibs.so.28:_ZN6Cantor11ImageResult8mimeTypeEv
+libcantorlibs.so.28:_ZN6Cantor11ImageResult9extensionEv
 libcantorlibs.so.28:_ZN6Cantor11ImageResultC1ERK4QUrlRK7QString
 libcantorlibs.so.28:_ZN6Cantor11ImageResultC1ERK6QImageRK7QString
 libcantorlibs.so.28:_ZN6Cantor11ImageResultC2ERK4QUrlRK7QString
