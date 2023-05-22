@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : cantor
-Version  : 23.04.0
-Release  : 74
-URL      : https://download.kde.org/stable/release-service/23.04.0/src/cantor-23.04.0.tar.xz
-Source0  : https://download.kde.org/stable/release-service/23.04.0/src/cantor-23.04.0.tar.xz
-Source1  : https://download.kde.org/stable/release-service/23.04.0/src/cantor-23.04.0.tar.xz.sig
+Version  : 23.04.1
+Release  : 75
+URL      : https://download.kde.org/stable/release-service/23.04.1/src/cantor-23.04.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/23.04.1/src/cantor-23.04.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/23.04.1/src/cantor-23.04.1.tar.xz.sig
 Summary  : C implementation of John Gruber's Markdown markup language
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GPL-2.0 GPL-3.0
@@ -124,31 +124,48 @@ locales components for the cantor package.
 
 
 %prep
-%setup -q -n cantor-23.04.0
-cd %{_builddir}/cantor-23.04.0
+%setup -q -n cantor-23.04.1
+cd %{_builddir}/cantor-23.04.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682027003
+export SOURCE_DATE_EPOCH=1684789310
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+%cmake ..
+make  %{?_smp_mflags}
+popd
+mkdir -p clr-build-avx2
+pushd clr-build-avx2
+export GCC_IGNORE_WERROR=1
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export FCFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export FFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export CXXFLAGS="$CXXFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export CFLAGS="$CFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export CXXFLAGS="$CXXFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export FFLAGS="$FFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export FCFLAGS="$FCFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1682027003
+export SOURCE_DATE_EPOCH=1684789310
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/cantor
 cp %{_builddir}/cantor-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/cantor/f1946dab78e58c04c8c25ec6b074f5fc5c2830fe || :
@@ -159,16 +176,23 @@ cp %{_builddir}/cantor-%{version}/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/sha
 cp %{_builddir}/cantor-%{version}/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/cantor/7d9831e05094ce723947d729c2a46a09d6e90275 || :
 cp %{_builddir}/cantor-%{version}/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/cantor/7d9831e05094ce723947d729c2a46a09d6e90275 || :
 cp %{_builddir}/cantor-%{version}/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/cantor/ff3ed70db4739b3c6747c7f624fe2bad70802987 || :
+pushd clr-build-avx2
+%make_install_v3  || :
+popd
 pushd clr-build
 %make_install
 popd
 %find_lang cantor
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
 
 %files bin
 %defattr(-,root,root,-)
+/V3/usr/bin/cantor
+/V3/usr/bin/cantor_pythonserver
+/V3/usr/bin/cantor_scripteditor
 /usr/bin/cantor
 /usr/bin/cantor_pythonserver
 /usr/bin/cantor_scripteditor
@@ -242,6 +266,9 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
+/V3/usr/lib64/cantor_pythonbackend.so
+/V3/usr/lib64/libcantor_config.so
+/V3/usr/lib64/libcantorlibs.so
 /usr/include/cantor/animationresult.h
 /usr/include/cantor/backend.h
 /usr/include/cantor/cantor_export.h
@@ -346,7 +373,36 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libcantorlibs.so.23.04.0
+/V3/usr/lib64/libcantorlibs.so.23.04.1
+/V3/usr/lib64/libcantorlibs.so.28
+/V3/usr/lib64/qt5/plugins/cantor/assistants/cantor_advancedplotassistant.so
+/V3/usr/lib64/qt5/plugins/cantor/assistants/cantor_creatematrixassistant.so
+/V3/usr/lib64/qt5/plugins/cantor/assistants/cantor_differentiateassistant.so
+/V3/usr/lib64/qt5/plugins/cantor/assistants/cantor_eigenvaluesassistant.so
+/V3/usr/lib64/qt5/plugins/cantor/assistants/cantor_eigenvectorsassistant.so
+/V3/usr/lib64/qt5/plugins/cantor/assistants/cantor_importpackageassistant.so
+/V3/usr/lib64/qt5/plugins/cantor/assistants/cantor_integrateassistant.so
+/V3/usr/lib64/qt5/plugins/cantor/assistants/cantor_invertmatrixassistant.so
+/V3/usr/lib64/qt5/plugins/cantor/assistants/cantor_plot2dassistant.so
+/V3/usr/lib64/qt5/plugins/cantor/assistants/cantor_plot3dassistant.so
+/V3/usr/lib64/qt5/plugins/cantor/assistants/cantor_qalculateplotassistant.so
+/V3/usr/lib64/qt5/plugins/cantor/assistants/cantor_runscriptassistant.so
+/V3/usr/lib64/qt5/plugins/cantor/assistants/cantor_solveassistant.so
+/V3/usr/lib64/qt5/plugins/cantor/backends/cantor_kalgebrabackend.so
+/V3/usr/lib64/qt5/plugins/cantor/backends/cantor_luabackend.so
+/V3/usr/lib64/qt5/plugins/cantor/backends/cantor_maximabackend.so
+/V3/usr/lib64/qt5/plugins/cantor/backends/cantor_octavebackend.so
+/V3/usr/lib64/qt5/plugins/cantor/backends/cantor_pythonbackend.so
+/V3/usr/lib64/qt5/plugins/cantor/backends/cantor_qalculatebackend.so
+/V3/usr/lib64/qt5/plugins/cantor/backends/cantor_sagebackend.so
+/V3/usr/lib64/qt5/plugins/cantor/backends/cantor_scilabbackend.so
+/V3/usr/lib64/qt5/plugins/cantor/panels/cantor_documentationpanelplugin.so
+/V3/usr/lib64/qt5/plugins/cantor/panels/cantor_filebrowserpanelplugin.so
+/V3/usr/lib64/qt5/plugins/cantor/panels/cantor_helppanelplugin.so
+/V3/usr/lib64/qt5/plugins/cantor/panels/cantor_tocpanelplugin.so
+/V3/usr/lib64/qt5/plugins/cantor/panels/cantor_variablemanagerplugin.so
+/V3/usr/lib64/qt5/plugins/kf5/parts/cantorpart.so
+/usr/lib64/libcantorlibs.so.23.04.1
 /usr/lib64/libcantorlibs.so.28
 /usr/lib64/qt5/plugins/cantor/assistants/cantor_advancedplotassistant.so
 /usr/lib64/qt5/plugins/cantor/assistants/cantor_creatematrixassistant.so
