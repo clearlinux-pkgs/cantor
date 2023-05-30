@@ -7,7 +7,7 @@
 #
 Name     : cantor
 Version  : 23.04.1
-Release  : 75
+Release  : 76
 URL      : https://download.kde.org/stable/release-service/23.04.1/src/cantor-23.04.1.tar.xz
 Source0  : https://download.kde.org/stable/release-service/23.04.1/src/cantor-23.04.1.tar.xz
 Source1  : https://download.kde.org/stable/release-service/23.04.1/src/cantor-23.04.1.tar.xz.sig
@@ -132,7 +132,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1684789310
+export SOURCE_DATE_EPOCH=1685486865
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -165,7 +165,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1684789310
+export SOURCE_DATE_EPOCH=1685486865
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/cantor
 cp %{_builddir}/cantor-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/cantor/f1946dab78e58c04c8c25ec6b074f5fc5c2830fe || :
@@ -268,7 +268,6 @@ popd
 %defattr(-,root,root,-)
 /V3/usr/lib64/cantor_pythonbackend.so
 /V3/usr/lib64/libcantor_config.so
-/V3/usr/lib64/libcantorlibs.so
 /usr/include/cantor/animationresult.h
 /usr/include/cantor/backend.h
 /usr/include/cantor/cantor_export.h
@@ -374,7 +373,6 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /V3/usr/lib64/libcantorlibs.so.23.04.1
-/V3/usr/lib64/libcantorlibs.so.28
 /V3/usr/lib64/qt5/plugins/cantor/assistants/cantor_advancedplotassistant.so
 /V3/usr/lib64/qt5/plugins/cantor/assistants/cantor_creatematrixassistant.so
 /V3/usr/lib64/qt5/plugins/cantor/assistants/cantor_differentiateassistant.so
