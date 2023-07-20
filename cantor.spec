@@ -7,7 +7,7 @@
 #
 Name     : cantor
 Version  : 23.04.3
-Release  : 79
+Release  : 80
 URL      : https://download.kde.org/stable/release-service/23.04.3/src/cantor-23.04.3.tar.xz
 Source0  : https://download.kde.org/stable/release-service/23.04.3/src/cantor-23.04.3.tar.xz
 Source1  : https://download.kde.org/stable/release-service/23.04.3/src/cantor-23.04.3.tar.xz.sig
