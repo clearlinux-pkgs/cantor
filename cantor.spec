@@ -7,7 +7,7 @@
 #
 Name     : cantor
 Version  : 23.04.3
-Release  : 80
+Release  : 81
 URL      : https://download.kde.org/stable/release-service/23.04.3/src/cantor-23.04.3.tar.xz
 Source0  : https://download.kde.org/stable/release-service/23.04.3/src/cantor-23.04.3.tar.xz
 Source1  : https://download.kde.org/stable/release-service/23.04.3/src/cantor-23.04.3.tar.xz.sig
@@ -132,7 +132,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1688849615
+export SOURCE_DATE_EPOCH=1689900888
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -144,7 +144,7 @@ export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -
 export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 %cmake ..
-make  %{?_smp_mflags}
+make
 popd
 mkdir -p clr-build-avx2
 pushd clr-build-avx2
@@ -161,11 +161,11 @@ export CXXFLAGS="$CXXFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
 export FFLAGS="$FFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
 export FCFLAGS="$FCFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
 %cmake ..
-make  %{?_smp_mflags}
+make
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1688849615
+export SOURCE_DATE_EPOCH=1689900888
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/cantor
 cp %{_builddir}/cantor-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/cantor/f1946dab78e58c04c8c25ec6b074f5fc5c2830fe || :
