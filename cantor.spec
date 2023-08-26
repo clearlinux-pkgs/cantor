@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : cantor
-Version  : 23.04.3
-Release  : 81
-URL      : https://download.kde.org/stable/release-service/23.04.3/src/cantor-23.04.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/23.04.3/src/cantor-23.04.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/23.04.3/src/cantor-23.04.3.tar.xz.sig
+Version  : 23.08.0
+Release  : 82
+URL      : https://download.kde.org/stable/release-service/23.08.0/src/cantor-23.08.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/23.08.0/src/cantor-23.08.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/23.08.0/src/cantor-23.08.0.tar.xz.sig
 Summary  : C implementation of John Gruber's Markdown markup language
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GPL-2.0 GPL-3.0
@@ -124,15 +124,15 @@ locales components for the cantor package.
 
 
 %prep
-%setup -q -n cantor-23.04.3
-cd %{_builddir}/cantor-23.04.3
+%setup -q -n cantor-23.08.0
+cd %{_builddir}/cantor-23.08.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1689900888
+export SOURCE_DATE_EPOCH=1693013636
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -165,7 +165,7 @@ make
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1689900888
+export SOURCE_DATE_EPOCH=1693013636
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/cantor
 cp %{_builddir}/cantor-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/cantor/f1946dab78e58c04c8c25ec6b074f5fc5c2830fe || :
@@ -207,7 +207,6 @@ popd
 /usr/share/cantor/octavebackend/cantor_plot2d.m
 /usr/share/cantor/octavebackend/cantor_plot3d.m
 /usr/share/cantor/python/graphic_packages.xml
-/usr/share/cantor/sagebackend/cantor-execsage
 /usr/share/cantor/xslt/latex.xsl
 /usr/share/config.kcfg/cantor.kcfg
 /usr/share/config.kcfg/cantor_libs.kcfg
@@ -372,7 +371,7 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libcantorlibs.so.23.04.3
+/V3/usr/lib64/libcantorlibs.so.23.08.0
 /V3/usr/lib64/qt5/plugins/cantor/assistants/cantor_advancedplotassistant.so
 /V3/usr/lib64/qt5/plugins/cantor/assistants/cantor_creatematrixassistant.so
 /V3/usr/lib64/qt5/plugins/cantor/assistants/cantor_differentiateassistant.so
@@ -400,7 +399,7 @@ popd
 /V3/usr/lib64/qt5/plugins/cantor/panels/cantor_tocpanelplugin.so
 /V3/usr/lib64/qt5/plugins/cantor/panels/cantor_variablemanagerplugin.so
 /V3/usr/lib64/qt5/plugins/kf5/parts/cantorpart.so
-/usr/lib64/libcantorlibs.so.23.04.3
+/usr/lib64/libcantorlibs.so.23.08.0
 /usr/lib64/libcantorlibs.so.28
 /usr/lib64/qt5/plugins/cantor/assistants/cantor_advancedplotassistant.so
 /usr/lib64/qt5/plugins/cantor/assistants/cantor_creatematrixassistant.so
